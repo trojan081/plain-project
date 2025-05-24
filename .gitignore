@@ -15,6 +15,13 @@ __pycache__/
 code/
 backend/scripts/
 *.py
+*.tar
+
 
 # OS
 Thumbs.db
+
+# Frontend 
+public/
+public — копия/
+src/assets
