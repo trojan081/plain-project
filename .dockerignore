@@ -1,0 +1,8 @@
+code
+.env.dev
+*.md
+*.log
+Резюме проекта «Личный кабинет + уп.txt
+
+node_modules
+dist
