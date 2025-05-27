@@ -14,14 +14,22 @@ __pycache__/
 *.log
 code/
 backend/scripts/
-*.py
 *.tar
+*.txt
+*.jpg
+*.webp
+*.mp4
+*.svg
+*.png
+*.db
+*.dxf
 
 
 # OS
 Thumbs.db
 
 # Frontend 
-public/
-public — копия/
+backend/public/
+backend/public — копия/
 src/assets
+/Описание + схемы

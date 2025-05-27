@@ -73,9 +73,8 @@
 
   
   /* .logo {
-    font-size: 1.2vw;
-    text-decoration: none;
-    color: #fff;
+    scale: 1.2;
+    padding-left: 1%;
   } */
   
   .menu {
@@ -137,7 +136,7 @@
     opacity: 1;
   }
 
-  .demo {
+.demo {
   cursor: pointer;
   color: rgba(0, 0, 0, 0.466);
   font-size: 1.2vw;
@@ -146,6 +145,64 @@
 .demo:hover {
   background-color: #2f56911a;
   border-radius: 12px;
+}
+
+/* .logo img {
+  height: 2.5rem;
+  max-height: 10vw;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+.logo img:hover {
+  transform: scale(1.05);
+} */
+
+.demo {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.1rem;
+  padding: 0.7rem 3.3rem;
+  background: transparent;
+  border: 1.5px solid transparent;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.demo:hover {
+  background-color: #2f56911a;
+  border-color: #2f569155;
+}
+
+.logo img {
+  padding-left: 0.8rem;
+  transform: scale(1);
+  transform-origin: left center;
+  transition: transform 0.3s ease, padding-left 0.3s ease;
+  height: auto;
+  display: block;
+}
+
+/* Hover эффект — немного увеличим логотип */
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+/* ====== Мобильная адаптация ====== */
+@media (max-width: 768px) {
+  .logo img {
+    padding-left: 0.1rem;
+    transform: scale(0.85);
+    scale: 1.8;
+  }
+}
+
+/* ====== Широкие экраны (например 1440px+) ====== */
+@media (min-width: 1440px) {
+  .logo img {
+    padding-left: 1.2rem;
+    transform: scale(1.15);
+    scale: 0.8;
+  }
 }
   </style>
   

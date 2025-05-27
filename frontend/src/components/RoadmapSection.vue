@@ -437,7 +437,7 @@ const hover = idx => activeIndex.value = idx;
     min-width: 390px;
   }
     .point-label .label-title {
-  font-size: 3.3rem;
+  font-size: 2.7rem;
 }
 }
 

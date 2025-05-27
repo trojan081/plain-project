@@ -56,4 +56,18 @@ defineProps({
   color: #012b85;
   font-weight: bold;
 }
+
+/* ====== Мобильная адаптация ====== */
+@media (max-width: 768px) {
+  .segment-title {
+  font-size: 2.4vw;
+}
+}
+
+/* ====== Широкие экраны (например 1440px+) ====== */
+@media (min-width: 1440px) {
+  .segment-title {
+  font-size: 0.66vw;
+  }
+}
 </style>

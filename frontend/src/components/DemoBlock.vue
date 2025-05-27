@@ -19,7 +19,7 @@
 
     <!-- Окно вывода -->
     <div class="demo-output-window">
-      <h3>Результат</h3>
+      <h3 class="result_button">Результат</h3>
       <div class="output-box">
         <pre v-if="loading">Загрузка...</pre>
         <pre v-else-if="result">{{ result }}</pre>
@@ -155,4 +155,35 @@ async function handleRun() {
   color: #333;
 }
 
+/* ====== Мобильная адаптация ====== */
+@media (max-width: 768px) {
+.demo-title {
+  font-size: 0.81rem;
+}
+/* .h3 {
+  font-size: 0.6rem;
+} */
+.custom-upload-btn {
+  font-size: 0.66rem;
+}
+.demo-button {
+  font-size: 0.66rem;
+}
+.result_button {
+  font-size: 0.81rem;
+}
+.output-placeholder {
+  font-size: 0.66rem;
+}
+}
+
+/* ====== Широкие экраны (например 1440px+) ====== */
+@media (min-width: 1440px) {
+.demo-title {
+  font-size: 0.9rem;
+}
+.result_button {
+  font-size: 0.54rem;
+}
+}
 </style>

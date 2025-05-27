@@ -737,4 +737,43 @@
   .split-innovation-video-wrap { margin-left: 0; }
   .split-innovation-video { width: 98vw; max-width: 100vw; }
 }
+
+@media (max-width: 768px) {
+  .start-section {
+    padding: 1.2rem 1rem;
+    margin: 5% auto;
+    border-radius: 32px;
+    width: 80%;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+    gap: 1.5rem;
+  }
+
+  .start-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.2rem;
+  }
+
+  .start-text {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    /* padding: 0 0.4rem; */
+  }
+
+  .start-button {
+    font-size: 0.81rem;
+    padding: 0.6rem 1.2rem;
+    width: 45%;
+    max-width: 280px;
+    text-align: center;
+    border-radius: 18px;
+  }
+
+  .demo-img {
+    width: 100%;
+    max-width: 220px;
+    border-radius: 14px;
+  }
+}
+
   </style>
