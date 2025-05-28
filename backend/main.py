@@ -9,6 +9,7 @@ from middlewares.auth import AuthMiddleware
 from middlewares.security_headers import SecurityHeadersMiddleware
 from fastapi.staticfiles import StaticFiles
 
+
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 app = FastAPI()
@@ -16,13 +17,13 @@ app = FastAPI()
 from routers import (
     demo, approval, auth, construction, invitation,
     organizations, project_status, projects, regulators,
-    user_info, user_profile
+    user_info, user_profile, llm_chat
 )
 
 for router in [
     auth, user_info, projects, approval, organizations,
     construction, regulators, project_status, invitation,
-    user_profile, demo
+    user_profile, demo, llm_chat
 ]:
     app.include_router(router.router, prefix="/api")
 

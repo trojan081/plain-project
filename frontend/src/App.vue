@@ -38,4 +38,22 @@ const isDemoPageRoute = computed(() => {
 .page-content {
   flex: 1;
 }
+
+/* ====== Мобильная адаптация ====== */
+@media (max-width: 768px) {
+  .logo img {
+    padding-left: 0.1rem;
+    transform: scale(0.85);
+    scale: 1.8;
+  }
+}
+
+/* ====== Широкие экраны (например 1440px+) ====== */
+@media (min-width: 1440px) {
+  .logo img {
+    padding-left: 1.2rem;
+    transform: scale(1.15);
+    scale: 0.8;
+  }
+}
 </style>

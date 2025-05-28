@@ -11,6 +11,7 @@ dist/
 __pycache__/
 *.pyc
 .env
+.env.dev
 *.log
 code/
 backend/scripts/
@@ -23,6 +24,7 @@ backend/scripts/
 *.png
 *.db
 *.dxf
+*.md
 
 
 # OS

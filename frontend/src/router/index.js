@@ -16,6 +16,7 @@ import AddProject from '../views/AddProject.vue'
 import ProjectInfo from '../views/ProjectInfo.vue'
 import UserProfile from '../views/UserProfile.vue'
 import DemoPage from '../views/DemoPage.vue'
+import LLMChat from '@/components/LLMChat.vue'
 
 const routes = [
   { path: '/',            name: 'Home',               component: Home },
@@ -33,6 +34,8 @@ const routes = [
   { path: '/project/:id',    name: 'ProjectInfo',     component: ProjectInfo, meta: { requiresAuth: true } },
   { path: '/user/:slug',    name: 'UserProfile',        component: UserProfile, meta: { requiresAuth: true } }, 
   { path: '/demo', name: 'DemoPage', component: DemoPage},
+  {path: '/chat',  name: 'Chat',  component: LLMChat,  meta: { requiresAuth: false }},
+
 ]
 
 const router = createRouter({

@@ -34,7 +34,9 @@
           </div>
         </div>
       </div>
-      
+        <div class="llmchat-container">
+          <LLMChat />
+        </div>
     <hr class="hr-0" />
       <div class="triple-wrapper">
         <div class="center-column">
@@ -58,7 +60,7 @@
             <p class="text-h1">Мы создаем инновации</p>
           </div>
       
-          <div class="oval-container">
+          <div class="oval-container-1">
             <div class="content-row">
               <div class="text-v-2-Container">
                 <p class="text-v-2">
@@ -75,7 +77,7 @@
           </div>
 
       
-          <div class="oval-container">
+          <div class="oval-container-2">
             <div class="content-row">
               <div class="video-container">
                 <video loop autoplay muted playsinline class="background-video">
@@ -92,7 +94,7 @@
             </div>
           </div>  
       
-          <div class="oval-container">
+          <div class="oval-container-1">
             <div class="content-row">
               <div class="text-v-1-Container">
                 <p class="text-v-2">
@@ -217,6 +219,7 @@
   import RoadmapSection from '@/components/RoadmapSection.vue'
   import Cube1 from '@/components/Cube1.vue'
   import Lines1 from '@/components/Lines1.vue'
+  import LLMChat from '@/components/LLMChat.vue'
 
 
     const roadmapImages = [
@@ -775,5 +778,29 @@
     border-radius: 14px;
   }
 }
+.oval-container-1, .oval-container-2 {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+.oval-container-1:hover {
+  box-shadow: 0 12px 48px 0 #81c7ff2c, 0 2px 8px #6e8bd924;
+  background: linear-gradient(96deg, #1d6aa815  40%, #fafdff 50%);
+}
 
+.oval-container-2:hover {
+  /* Зеркальная (reverse) тень — вверх, а не вниз + reverse gradient */
+  box-shadow: 0 -12px 48px 0 #81c7ff2c, 0 -2px 8px #6e8bd924;
+  background: linear-gradient(264deg, #1d6aa815 40%, #fafdff 50%);
+}
+.user { 
+  text-align:right; 
+  color:#3477f5 
+}
+.ai   { 
+  text-align:left;  
+  color:#333 
+}
+.llmchat-container {
+  margin-top: 120px;
+  margin-bottom: 0px;
+}
   </style>

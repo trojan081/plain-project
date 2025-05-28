@@ -91,7 +91,7 @@ html, body {
   border: none;
   height: 1.5px;
   background: linear-gradient(to right, #ccc, #333, #ccc);
-  margin: 30% 0;
+  margin: 10% 0;
 }
 
 .custom-hr {
@@ -768,13 +768,13 @@ html, body {
 }
 
 
-.oval-container {
+.oval-container-1, .oval-container-2 {
   display: flex;
   position: relative;
   border: 1.5px solid #00000079;
   border-radius: 660px; 
-  margin-left: 6%;
-  margin-right: 6%;
+  margin-left: 9%;
+  margin-right: 9%;
   margin-bottom: 1%;
   overflow: hidden;
   /* height: 10vw; */
