@@ -1,21 +1,21 @@
-
 <template>
+    <!-- Loading Screen -->
     <div v-show="isLoading" class="loading-screen">
       <img src="/assets/gear.jpg" alt="Loading..." class="loading-icon" />
     </div>
-    
+  
+
           <div>
             <div 
               class="header" 
               :style="{ filter: `blur(${blurValue}px)` }"
             >
-              <div class="centered-title-container">
-                <div class="main-title">PLAIN</div>
-                <div class="subtitle">новое слово в проектировании</div>
-              </div>
+              <h1 class="title-left" :class="{ visible: showTitle }">The Future</h1>
+              <h2 class="title-right" :class="{ visible: showSubtitle }">is Now</h2>
+              
             </div>
-            <!-- <Card /> -->
-          <!-- <div class="triple-wrapper">
+            
+          <div class="triple-wrapper">
         <div class="center-column">
             <div class="gates-container" ref="gatesContainer">
               <div class="gate gate-left" ref="gateLeft" :style="{ backgroundImage: 'url(/assets/gate-1.jpg)' }"></div>
@@ -33,20 +33,16 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
-        <!-- <div class="llmchat-container">
+        <div class="llmchat-container">
           <LLMChat />
-        </div> -->
-    <!-- <Lines1 /> -->
-    <HeroBanner />
-    <InnovationSection />
-    <Cards />
-    <!-- <hr class="hr-0" /> -->
+        </div>
+    <hr class="hr-0" />
       <div class="triple-wrapper">
         <div class="center-column">
 
-          <!-- <div class="img-cube-container" ref="imgContainer">
+          <div class="img-cube-container" ref="imgContainer">
             <img
               src="/assets/2.jpg"
               alt="Image 1"
@@ -59,30 +55,62 @@
               class="fade-in-2"
               :class="{ visible: isSecondImgVisible }"
             />
-          </div> -->
-      
-          <div class="text-1-container">
-            <p class="text-h1">Кому подойдёт?</p>
           </div>
-          <div class="suitable-for-section">
-            <div class="suitable-for-container">
-              <div class="suitable-for-item" 
-                   v-for="(item, index) in suitableForItems" 
-                   :key="index">
-                <img :src="item.imgSrc" alt="Подходит" class="suitable-for-img" />
-                <h3 class="suitable-for-title">{{ item.title }}</h3>
-                <div class="suitable-for-description">
-                  <ul class="suitable_for_list">
-                    <li v-for="(desc, i) in item.description" :key="i">{{ desc }}</li>
-                  </ul>
-                </div>
+      
+<div class="text-1-container" ref="textContainer">
+            <p class="text-h1">Мы создаем инновации</p>
+          </div>
+      
+          <div class="oval-container-1">
+            <div class="content-row">
+              <div class="text-v-2-Container">
+                <p class="text-v-2">
+                  Внедряем новейшие технологии в процессы благоустройства современной городской среды
+                </p>
+              </div>
+              <div class="video-container">
+                <video loop autoplay muted playsinline class="background-video">
+                  <source src="../assets/videos/v1.mp4" type="video/mp4" />
+                  Ваш браузер не поддерживает видео.
+                </video>
               </div>
             </div>
           </div>
-        </div>
-        </div>
-          <hr class="custom-hr" /> 
 
+      
+          <div class="oval-container-2">
+            <div class="content-row">
+              <div class="video-container">
+                <video loop autoplay muted playsinline class="background-video">
+                  <source src="../assets/videos/v3.mp4" type="video/mp4" />
+                  Ваш браузер не поддерживает видео.
+                </video>
+              </div>
+        
+              <div class="text-v-1-Container">
+                <p class="text-v-1">
+                  Выводим качество и скорость<br> выполнения проектов на новый уровень
+                </p>
+              </div>
+            </div>
+          </div>  
+      
+          <div class="oval-container-1">
+            <div class="content-row">
+              <div class="text-v-1-Container">
+                <p class="text-v-2">
+                  Даем возможность получить <br> преимущества перед конкурентами
+                </p>
+              </div>
+        
+              <div class="video-container">
+                <video loop autoplay muted playsinline class="background-video">
+                  <source src="../assets/videos/v5.mp4" type="video/mp4" />
+                  Ваш браузер не поддерживает видео.
+                </video>
+              </div>
+            </div>
+          </div>
       
           <div class="text-2-container" ref="textContainer">
             <p class="text-h2">Зачем это нужно?</p>
@@ -140,7 +168,27 @@
             </div>
           </div>
       
-
+          <div class="text-1-container">
+            <p class="text-h1">Кому подойдёт?</p>
+          </div>
+          <div class="suitable-for-section">
+            <div class="suitable-for-container">
+              <div class="suitable-for-item" 
+                   v-for="(item, index) in suitableForItems" 
+                   :key="index">
+                <img :src="item.imgSrc" alt="Подходит" class="suitable-for-img" />
+                <h3 class="suitable-for-title">{{ item.title }}</h3>
+                <div class="suitable-for-description">
+                  <ul class="suitable_for_list">
+                    <li v-for="(desc, i) in item.description" :key="i">{{ desc }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+          <hr class="custom-hr" /> 
           
           <div class="triple-wrapper">
         <div class="center-column">
@@ -173,10 +221,6 @@
   import Cube1 from '@/components/Cube1.vue'
   import Lines1 from '@/components/Lines1.vue'
   import LLMChat from '@/components/LLMChat.vue'
-  import Card from '@/components/Card.vue'
-  import InnovationSection from '@/components/InnovationSection.vue'
-  import HeroBanner from '@/components/HeroBanner.vue'
-  import Cards from '@/components/Cards.vue'
 
 
     const roadmapImages = [
@@ -444,7 +488,8 @@
             });
           });
         }
-
+  
+  
   
         updateGatesTransform();
   
@@ -542,7 +587,160 @@
     transform: translateY(0);
   }
 }
+.innovation-hero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.8rem;
+  margin: 54px 0 64px 0;
+  background: linear-gradient(105deg, #f7faff 70%, #e0edff 100%);
+  border-radius: 40px;
+  box-shadow: 0 6px 48px #9ab5ff25, 0 2px 8px #8bbfff12;
+  padding: 2.8rem 3.5rem 2.2rem 2.9rem;
+  animation: heroAppear 1.2s cubic-bezier(.61,0,.18,1.04);
+  overflow: hidden;
+}
 
+@keyframes heroAppear {
+  from {
+    opacity: 0;
+    transform: translateY(56px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.split-innovation-block {
+  display: flex;
+  align-items: center;
+  background: #fafdff;
+  border-radius: 38px;
+  box-shadow: 0 7px 38px #0086ff18, 0 2px 8px #8bbfff09;
+  margin: 68px 0 58px 0;
+  padding: 2.7rem 2.3rem 2.2rem 1.4rem;
+  position: relative;
+  min-height: 270px;
+  overflow: hidden;
+}
+
+.split-innovation-stripe {
+  width: 9px;
+  min-width: 9px;
+  height: 78%;
+  background: linear-gradient(145deg, #5ae0fd 20%, #2196f3 92%);
+  border-radius: 12px;
+  margin-right: 32px;
+  margin-left: 8px;
+  box-shadow: 0 0 18px #2196f330;
+  animation: stripeAppear 1.2s cubic-bezier(.6,0,.39,1.34);
+}
+@keyframes stripeAppear {
+  from { height: 0; opacity: 0.1;}
+  to   { height: 78%; opacity: 1;}
+}
+
+.split-innovation-content {
+  flex: 1 1 56%;
+  z-index: 2;
+}
+
+.split-innovation-header {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  margin-bottom: 0.5em;
+}
+
+.innovation-icon {
+  filter: drop-shadow(0 0 10px #2196f322);
+  transition: filter 0.17s;
+}
+
+.split-innovation-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #0e3b66;
+  letter-spacing: 0.01em;
+  position: relative;
+  display: inline-block;
+}
+
+.glow-text {
+  color: #2196f3;
+  text-shadow: 0 2px 18px #5ae0fd33, 0 1px 2px #8bbfff66;
+  font-weight: 900;
+  position: relative;
+}
+
+.split-innovation-desc {
+  font-size: 1.19rem;
+  color: #376893;
+  font-weight: 500;
+  line-height: 1.53;
+  margin-bottom: 0;
+  margin-top: 0.2em;
+  border-left: 4px solid #00b4fc35;
+  background: #f6fbffed;
+  padding: 1em 1.8em 1em 1.2em;
+  border-radius: 13px;
+  box-shadow: 0 2px 18px #83c3ff1c;
+  transition: background 0.22s, box-shadow 0.28s;
+  max-width: 520px;
+}
+
+.split-innovation-video-wrap {
+  flex: 0 0 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 3.1rem;
+  background: linear-gradient(135deg, #eaf6ff 65%, #c9eaff 100%);
+  border-radius: 2.2rem;
+  padding: 13px 13px 13px 13px;
+  box-shadow: 0 8px 40px #0094ff16;
+  min-width: 130px;
+  max-width: 410px;
+}
+
+.split-innovation-video {
+  display: block;
+  border-radius: 1.4rem;
+  box-shadow: 0 3px 18px #2196f319;
+  width: 292px;
+  max-width: 38vw;
+  min-width: 120px;
+  min-height: 85px;
+  background: #000;
+}
+
+@media (max-width: 900px) {
+  .split-innovation-block {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.5rem 0.6rem 1.3rem 0.7rem;
+    gap: 1.6rem;
+    min-height: 0;
+  }
+  .split-innovation-stripe {
+    height: 6px;
+    min-width: 30vw;
+    width: 100vw;
+    border-radius: 10px;
+    margin-bottom: 22px;
+    margin-left: 0;
+    margin-right: 0;
+    animation: stripeAppearX 1.2s cubic-bezier(.6,0,.39,1.34);
+  }
+  @keyframes stripeAppearX {
+    from { width: 0; opacity: 0.1;}
+    to   { width: 100vw; opacity: 1;}
+  }
+  .split-innovation-header { gap: 0.8rem; }
+  .split-innovation-video-wrap { margin-left: 0; }
+  .split-innovation-video { width: 98vw; max-width: 100vw; }
+}
 
 @media (max-width: 768px) {
   .start-section {
@@ -606,61 +804,4 @@
   margin-top: 120px;
   margin-bottom: 0px;
 }
-.centered-title-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  height: 300px;      /* регулируй по желанию */
-  position: relative;
-  z-index: 2;
-  /* background-color: #3563b81c; */
-  /* -webkit-mask-image: linear-gradient(to right, transparent 0%, rgb(0, 0, 0) 12%, black 88%, transparent 100%); */
-  /* mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%); */
-}
-
-.main-title {
-  font-size: clamp(2.1rem, 5vw + 1.1rem, 4.2rem);
-  font-weight: 900;
-  color: #ffffff;
-  text-shadow: 4px 2px 4px rgba(17, 17, 17, 0.888);
-  margin-bottom: 0.7em;
-  margin-top: 10%;
-  letter-spacing: 0.35em;
-  opacity: 0;
-  transform: translateY(-40px) scale(0.98);
-  animation: titleFadeIn 1.2s cubic-bezier(.56,0,.31,1) forwards;
-  animation-delay: 0.3s;
-}
-
-.subtitle {
-  font-size: clamp(1.2rem, 2.1vw + 0.9rem, 2.5rem);
-  font-weight: 400;
-  color: #ffffff;
-  text-shadow: 2px 1px 4px rgb(17, 17, 17, 0.888);
-  letter-spacing: 0.01em;
-  opacity: 0;
-  transform: translateY(40px) scale(0.97);
-  animation: subtitleFadeIn 1.25s cubic-bezier(.56,0,.31,1) forwards;
-  animation-delay: 1.2s;
-}
-
-/* Ключевые кадры анимации */
-@keyframes titleFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes subtitleFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-
   </style>

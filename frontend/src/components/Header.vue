@@ -55,16 +55,16 @@
   
   <style scoped>
   .top-menu {
-    position: fixed; 
+    /* position: fixed; 
     top: 0;
-    left: 0;
+    left: 0; */
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #ffffff;
     color: #fff;
-    /* height: 6%; */
+    height: 45px;
     padding: 0.3rem 1rem;
     background-color: rgba(255, 255, 255, 0.0);
     z-index: 1000;   

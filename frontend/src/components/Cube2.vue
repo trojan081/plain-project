@@ -192,8 +192,8 @@
       x1="1.00946"
       id="paint0_linear_204_217"
     >
-      <stop stop-color="#5727CC"></stop>
-      <stop stop-color="#4354BF" offset="1"></stop>
+      <stop stop-color="#2563EB"></stop>
+      <stop stop-color="#3B82F6" offset="1"></stop>
     </linearGradient>
     <linearGradient
       gradientUnits="userSpaceOnUse"
@@ -203,9 +203,9 @@
       x1="92.5"
       id="paint1_linear_204_217"
     >
-      <stop stop-color="#4559C4"></stop>
-      <stop stop-color="#332C94" offset="0.29"></stop>
-      <stop stop-color="#5727CB" offset="1"></stop>
+      <stop stop-color="#3B82F6"></stop>
+      <stop stop-color="#1E3A8A " offset="0.19"></stop>
+      <stop stop-color="#2563EB " offset="1"></stop>
     </linearGradient>
     <linearGradient
       gradientUnits="userSpaceOnUse"

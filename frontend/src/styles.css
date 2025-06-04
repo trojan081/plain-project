@@ -1,7 +1,7 @@
 html, body {
   margin: 0;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background-color: #ffffff;
+  background-color: #00000002;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: thin;
@@ -82,7 +82,9 @@ html, body {
   position: relative;
   width: 100%;
   height: 600px;
-  background: url('/assets/h4.png') no-repeat center/cover;
+  /* background: url('/assets/Gem1.jpg') no-repeat center/cover; */
+    background: url('/assets/bg2.png') no-repeat center/cover;
+        /* background: url('/assets/h4.png') no-repeat center/cover; */
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -377,11 +379,12 @@ html, body {
   color: #fff;
 }
 
+
 .title-left {
   position: absolute;
   top: 15%;
   left: 15%;
-  font-size: 4.5vw;
+  font-size: 4.5vw; /* Original font size */
   opacity: 0;
   transition: all 2s ease-in-out;
 }
@@ -390,26 +393,42 @@ html, body {
   position: absolute;
   top: 45%;
   right: 15%;
-  font-size: 4.5vw;
+  font-size: 2.5vw; /* Original font size */
   opacity: 0;
   transition: all 2s ease-in-out;
 }
 
-/* При появлении надписи плавно двигаются к центру */
+/* Adjustments for larger screens (e.g., above 1600px width) */
+@media (min-width: 1601px) {
+  .title-left, .title-right {
+    font-size: 3.0vw; /* Reduced font size for larger screens */
+  }
+
+  .title-left {
+    left: 10%; /* Adjusted left position */
+    top: 20%; /* Adjusted top position */
+  }
+
+  .title-right {
+    right: 10%; /* Adjusted right position */
+    top: 50%; /* Adjusted top position */
+  }
+}
+
+/* Adjustments when visible */
 .title-left.visible {
-  left: 50%; 
-  top: 50%; 
+  left: 60%;
+  top: 50%;
   opacity: 1;
-  transform: translate(-100%, -240%); 
+  transform: translate(-100%, -240%);
 }
 
 .title-right.visible {
-  right: 50%; 
-  top: 50%; 
+  right: 74%;
+  top: 60%;
   opacity: 1;
   transform: translate(150%, -120%);
 }
-
 
 
 .content {
@@ -1822,3 +1841,4 @@ body.ios .video-container {
   flex: 1;
   padding: 2rem;
 }
+

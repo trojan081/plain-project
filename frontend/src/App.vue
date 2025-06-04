@@ -33,6 +33,13 @@ const isDemoPageRoute = computed(() => {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  max-width: 1800px;
+  justify-content: center;
+  margin: 0 auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: #ffffff;
 }
 
 .page-content {
