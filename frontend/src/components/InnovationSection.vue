@@ -10,21 +10,21 @@
           <source src="../assets/videos/v6.2.mp4" type="video/mp4" />
           Ваш браузер не поддерживает видео.
         </video>
-        <p class="video-caption">Интегрируйте новейшие технологии в процессы благоустройства городской среды</p>
+        <p class="video-caption">Интегрируй новейшие технологии в процессы благоустройства городской среды</p>
       </div>
       <div class="video-card">
         <video loop autoplay muted playsinline class="innovation-video">
           <source src="../assets/videos/v6.1.mp4" type="video/mp4" />
           Ваш браузер не поддерживает видео.
         </video>
-        <p class="video-caption">Выведете скорость и качество разработки проектов на новый уровень</p>
+        <p class="video-caption">Выведи скорость и качество разработки проектов на новый уровень</p>
       </div>
       <div class="video-card">
         <video loop autoplay muted playsinline class="innovation-video">
           <source src="../assets/videos/v5.mp4" type="video/mp4" />
           Ваш браузер не поддерживает видео.
         </video>
-        <p class="video-caption">Даем возможность бизнесу получить преимущества перед конкурентами</p>
+        <p class="video-caption">Получи ощутимые преимущества перед конкурентами</p>
       </div>
     </div>
   </section>
@@ -70,8 +70,8 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-top: 6%;
-  padding-bottom: 9%;
+  padding-top: 9%;
+  padding-bottom: 15%;
   
 }
 

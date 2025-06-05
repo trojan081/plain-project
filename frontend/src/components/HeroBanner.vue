@@ -38,7 +38,7 @@ import Lines1 from './Lines1.vue';
   justify-content: center; 
   padding: 4rem 2rem;
   max-width: 1600px; 
-  margin: 10% 12%; 
+  margin: 5% 12%; 
   gap: 2rem;
 }
 

@@ -14,6 +14,7 @@
                 <div class="subtitle">новое слово в проектировании</div>
               </div>
             </div>
+            
             <!-- <Card /> -->
           <!-- <div class="triple-wrapper">
         <div class="center-column">
@@ -43,8 +44,6 @@
     <InnovationSection />
     <Cards />
     <!-- <hr class="hr-0" /> -->
-      <div class="triple-wrapper">
-        <div class="center-column">
 
           <!-- <div class="img-cube-container" ref="imgContainer">
             <img
@@ -60,85 +59,14 @@
               :class="{ visible: isSecondImgVisible }"
             />
           </div> -->
-      
-          <div class="text-1-container">
-            <p class="text-h1">Кому подойдёт?</p>
-          </div>
-          <div class="suitable-for-section">
-            <div class="suitable-for-container">
-              <div class="suitable-for-item" 
-                   v-for="(item, index) in suitableForItems" 
-                   :key="index">
-                <img :src="item.imgSrc" alt="Подходит" class="suitable-for-img" />
-                <h3 class="suitable-for-title">{{ item.title }}</h3>
-                <div class="suitable-for-description">
-                  <ul class="suitable_for_list">
-                    <li v-for="(desc, i) in item.description" :key="i">{{ desc }}</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+      <Team />
+      <div class="usage-block-wrapper">
+        <div class="usage-background"></div>
+        <div class="usage-block">
+          <UsageBlock />
         </div>
-        </div>
-          <hr class="custom-hr" /> 
-
-      
-          <div class="text-2-container" ref="textContainer">
-            <p class="text-h2">Зачем это нужно?</p>
-          </div>
-      
-          <div class="grid-container">
-            <div class="grid-row">
-              <div class="grid-item" 
-                   v-for="(item, index) in l_column" 
-                   :key="'row2-' + index"
-                   :class="{ visible: isSectionVisible }">
-                <div class="card">
-                  <div class="card-face card-front">
-                    <img :src="item.imgSrc" alt="Image" />
-                    <p class="text_advantages"><b>{{ item.text_1 }}</b>{{ item.text_2 }}</p>
-                  </div>
-                  <div class="card-face card-back">
-                    <h3>{{ item.adv_header }}</h3>
-                    <div class="adv-row">
-                      <img src="../assets/dislike.jpg" alt="Image_dislike" class="like_dislike"/>
-                      <p class="text_advantages">{{item.adv_1}}<b>{{item.adv_1_1}}</b></p>
-                    </div>
-                    <div class="adv-row">
-                      <img src="../assets/like.jpg" alt="Image_dislike" class="like_dislike"/>
-                      <p class="text_advantages">{{item.adv_2}}<b>{{item.adv_2_2}}</b></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Вторая строка карточек -->
-            <div class="grid-row">
-              <div class="grid-item" 
-                   v-for="(item, index) in r_column" 
-                   :key="'row2-' + index"
-                   :class="{ visible: isSectionVisible }">
-                <div class="card">
-                  <div class="card-face card-front">
-                    <img :src="item.imgSrc" alt="Image" />
-                    <p class="text_advantages"><b>{{ item.text_1 }}</b>{{ item.text_2 }}</p>
-                  </div>
-                  <div class="card-face card-back">
-                    <h3>{{ item.adv_header }}</h3>
-                    <div class="adv-row">
-                      <img src="../assets/dislike.jpg" alt="Image_dislike" class="like_dislike"/>
-                      <p class="text_advantages">{{item.adv_1}}<b>{{item.adv_1_1}}</b></p>
-                    </div>
-                    <div class="adv-row">
-                      <img src="../assets/like.jpg" alt="Image_dislike" class="like_dislike"/>
-                      <p class="text_advantages">{{item.adv_2}}<b>{{item.adv_2_2}}</b></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      </div>
+          
       
 
           
@@ -147,7 +75,8 @@
           <div class="text-1-container">
             <h2 class="text-h2">Дорожная карта</h2>
           </div>
-          <RoadmapSection />
+          <!-- <RoadmapSection /> -->
+          <RoadMap2 />
         <div class="start-section">
           <div class="start-content">
             <!-- <img class="demo-img" src="/assets/cad6.jpg"/> -->
@@ -170,6 +99,7 @@
   import { ref, onMounted, onUnmounted } from 'vue'
   import { useI18n } from 'vue-i18n'
   import RoadmapSection from '@/components/RoadmapSection.vue'
+  import RoadMap2 from '@/components/RoadMap2.vue'
   import Cube1 from '@/components/Cube1.vue'
   import Lines1 from '@/components/Lines1.vue'
   import LLMChat from '@/components/LLMChat.vue'
@@ -177,7 +107,8 @@
   import InnovationSection from '@/components/InnovationSection.vue'
   import HeroBanner from '@/components/HeroBanner.vue'
   import Cards from '@/components/Cards.vue'
-
+  import Team from '@/components/Team.vue'
+  import UsageBlock from '@/components/UsageBlock.vue'
 
     const roadmapImages = [
       {
@@ -226,98 +157,7 @@
       const gridItemVisibility = ref([]);
   
       let startTouchY = 0;
-      const l_column = ref([
-      { 
-      imgSrc: './webp/k1.webp', 
-      text_1: 'Скорость:', 
-      text_2: ' забудьте про дедлайны', 
-      adv_header: 'Мы сократили время разработки проектной документации в десятки раз',
-      adv_1: 'Время разработки ПД:',
-      adv_1_1: '  2-4 недели',
-      adv_2: 'С помощью Plain:',
-      adv_2_2: ' 30 минут'
-    },
-    { 
-      imgSrc: './webp/k2.webp', 
-      text_1: 'Гибкость:', 
-      text_2: ' исправляйте в один клик', 
-      adv_header: 'Надоело переделывать чертежи из-за очередных изменений в проекте?',
-      adv_1: 'Корректировка чертежей вручную',
-      adv_2: 'Plain: исправит всё автоматически'
-    },
-    { 
-      imgSrc: './webp/kkkkk4.webp', 
-      text_1: 'Автоматизация:', 
-      text_2: ' делегируйте рутину',
-      adv_header: 'Мы научили алгоритмы выполнять ежедневные задачи за Вас',
-      adv_1: 'Чрезмерная многозадачность',
-      adv_2: 'Передайте часть задач Plain'
-    },
-      ])
-      
-      const r_column = ref([
-      { 
-      imgSrc: './webp/kk33.webp', 
-      text_1: 'Время:', 
-      text_2: ' сосредоточьтесь на важном',
-      adv_header: 'Освободили для Вас наиболее ценный ресурс - Ваше время',
-      adv_1: 'Участвовать во всех процессах',
-      adv_2: 'Эффективно управлять процессами'
-    },
-      { 
-      imgSrc: './webp/kkkk5.webp', 
-      text_1: 'Технологии:', 
-      text_2: ' точность чертежей до 99%',
-      adv_header: 'Исключили "внезапные" ошибки в чертежах и расчетах',
-      adv_1: 'Проверять за проектировщиками',
-      adv_2: 'Использовать новые технологии'
-    },
-      {
-      imgSrc: './webp/kk5.webp', 
-      text_1: 'Расходы:', 
-      text_2: ' сократите издержки',
-      adv_header: 'Сохраняем Ваши средства благодаря эффективному управлению ресурсами',
-      adv_1: 'Оплачивать долгие проекты',
-      adv_2: 'Экономить с помощью Plain'
-    }
-      ])
 
-  
-      const suitableForItems = ref([
-          { 
-            imgSrc: '/assets/for_whom_1_2.jpg', 
-            title: 'Инженерам генплана', 
-            description: ['Скорость разработки ПД',
-                          'Простота изменений',
-                          'Минимизация ошибок'
-            ] 
-          },
-          { 
-            imgSrc: '/assets/for_whom_2_3.jpg', 
-            title: 'Владельцам бизнеса', 
-            description: ['Оптимизация процессов',
-                          'Новейшие технологии ИИ',
-                          'Преимущества на рынке'
-            ] 
-          },
-          { 
-            imgSrc: '/assets/for_whom_3.jpg', 
-            title: 'Руководителям', 
-            description: ['Расчёт KPI команды',
-                          'Соблюдение сроков',
-                          'Полный контроль задач',
-                          
-            ] 
-          },
-          { 
-            imgSrc: '/assets/for_whom_4.jpg', 
-            title: 'Фрилансерам', 
-            description: ['Больше заказов',
-                          'Высокая эффективность',
-                          'Надёжность и репутация'
-            ] 
-          },
-        ]);
   
       const gatesContainer = ref(null)
       const gateLeft = ref(null)
@@ -662,5 +502,43 @@
   }
 }
 
+.usage-block-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+/* фоновая картинка, которую размоем */
+.usage-background {
+  position: absolute;
+  inset: 0;
+  background: url('/assets/bg6.png') center/cover no-repeat;
+  /* filter: blur(2220px); */
+  z-index: 1;
+}
+/* .innovation-section {
+  padding: 4rem 230px; 
+  background: url('/assets/bg3.png') no-repeat center/cover;
+  border-top: 1px solid #e9e9e9fd;
+  border-bottom: 1px solid #e9e9e9fd;
+  margin: 40px auto;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 9%;
+  padding-bottom: 15%;
+  
+} */
+
+/* содержимое поверх */
+.usage-block {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 13%;
+  border-bottom: 1px solid #e9e9e9fd;
+  background-color: rgba(255, 255, 255, 0.3); /* если нужно подсветлить */
+  backdrop-filter: blur(224px); 
+}
 
   </style>

@@ -13,8 +13,8 @@
                 </picture>
                 <!-- Text Grouped For Flexbox-->
                 <div class="cs-text-group">
-                    <h3 class="cs-h3">Скорость: забудьте про дедлайны</h3>
-                    <p class="cs-item-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h3 class="cs-h3"><b>Скорость:</b> забудь про дедлайны</h3>
+                    <p class="cs-item-text">Сократи время разработки проектной документации с 30 дней до 30 минут.</p>
                 </div>
             </li>
             <li class="cs-item">
@@ -24,8 +24,8 @@
                 </picture>
                 <!-- Text Grouped For Flexbox-->
                 <div class="cs-text-group">
-                    <h3 class="cs-h3">Brake Repair Service</h3>
-                    <p class="cs-item-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h3 class="cs-h3"><b>Гибкость:</b> правки в один клик</h3>
+                    <p class="cs-item-text">Используй встроенную корректировку чертежей вместо исправлений вручную.</p>
                 </div>
             </li>
             <li class="cs-item">
@@ -36,8 +36,8 @@
                 </picture>
                 <!-- Text Grouped For Flexbox-->
                 <div class="cs-text-group">
-                    <h3 class="cs-h3">AC Repair Service</h3>
-                    <p class="cs-item-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h3 class="cs-h3"><b>Автоматизация:</b> делегируй рутину</h3>
+                    <p class="cs-item-text">Доверь рутинные задачи искусственному интеллекту и быстрым алгоритмам.</p>
                 </div>
             </li>
             <li class="cs-item">
@@ -48,8 +48,8 @@
                 </picture>
                 <!-- Text Grouped For Flexbox-->
                 <div class="cs-text-group">
-                    <h3 class="cs-h3">Oil Filter Change</h3>
-                    <p class="cs-item-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h3 class="cs-h3"><b>Время:</b> сосредоточься на важном</h3>
+                    <p class="cs-item-text">Снижай вовлеченность в процессы, отслеживай активность сотрудников.</p>
                 </div>
             </li>
             <li class="cs-item">
@@ -60,8 +60,8 @@
                 </picture>
                 <!-- Text Grouped For Flexbox-->
                 <div class="cs-text-group">
-                    <h3 class="cs-h3">Changing Wheel</h3>
-                    <p class="cs-item-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h3 class="cs-h3"><b>Технологии:</b> точность чертежей</h3>
+                    <p class="cs-item-text">Исключи "внезапные" ошибки в чертежах, используя современные технологии.</p>
                 </div>
             </li>
             <li class="cs-item">
@@ -72,8 +72,8 @@
                 </picture>
                 <!-- Text Grouped For Flexbox-->
                 <div class="cs-text-group">
-                    <h3 class="cs-h3">Emissions Repair</h3>
-                    <p class="cs-item-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h3 class="cs-h3"><b>Расходы:</b> сокращай издержки</h3>
+                    <p class="cs-item-text">Экономь средства благодаря эффективному управлению ресурсами команды.</p>
                 </div>
             </li>
         </ul>
@@ -87,10 +87,24 @@
 /*-- -------------------------- -->
 <---          Services          -->
 <--- -------------------------- -*/
+.cs-h3 {
+  font-weight: 300;
+  color: #000000;
+}
+
+.cs-h3 b {
+  font-weight: 600;
+  color: #000000;
+}
+/* #services-1188 {
+  background-color: #00000005;
+} */
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
     #services-1188 {
         padding: var(--sectionPadding);
+        margin: 6% 0;
+        /* border-bottom: #0000001c solid 1px; */
     }
     #services-1188 .cs-container {
         max-width: 80rem;
@@ -130,10 +144,18 @@
         box-sizing: border-box;
         padding: 1rem;
         border: 1px solid #e8e8e8;
+        border-radius: 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: left;
+        background-color: rgba(255, 0, 0, 0.003);
+        /* box-shadow:
+            inset 0 0 15px rgba(55, 84, 170, 0),
+            inset 0 0 20px rgba(255, 255, 255, 0),
+            7px 7px 15px rgba(55, 84, 170, 0.15),
+            -7px -7px 20px rgba(255, 255, 255, 1),
+            inset 0px 0px 4px rgba(255, 255, 255, 0.2); */
     }
     #services-1188 .cs-picture {
         width: 5rem;
@@ -155,6 +177,8 @@
         height: auto;
         display: block;
         border-radius: 100px;
+        border: 1px solid #0000001c;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
     #services-1188 .cs-h3 {
         font-size: 1.25rem;

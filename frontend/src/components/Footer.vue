@@ -20,7 +20,7 @@
           <img class="uni_platform_logo" src="../assets/uni_platform_logo.png" alt="UNI Logo">
         </div>
       <div>
-        <p class="docs">Для связи: support@plain-project.ru</p>
+        <p class="docs">Наши контакты: support@plain-project.ru</p>
       </div>
       </div>
       
