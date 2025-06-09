@@ -60,6 +60,7 @@ async function handleRun() {
 </script>
 
 <style scoped>
+
 .demo-block {
   display: flex;
   flex-direction: column;
@@ -71,30 +72,40 @@ async function handleRun() {
 }
 
 .demo-title {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
+.result_button {
+  font-size: clamp(0.75rem, 1vw, 1rem);
+}
+
 .demo-section {
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .demo-button {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
   padding: 0.6rem 1.2rem;
-  background-color: #012b85;
-  color: white;
-  border: none;
   border-radius: 0.6rem;
-  font-size: 1rem;
+  font-weight: 600;
+  border: none;
   cursor: pointer;
+  transition: 0.3s;
+  cursor: pointer;
+  border: 1px solid #d6101079;
+  font-size: clamp(0.7rem, 1.2vw, 0.9rem);
 }
 .demo-button:hover {
-  background-color: #012b8591;
+  background-color: #c000005e;
 }
 
 .demo-button:disabled {
-  background-color: #012b8521;
+  border: 1px solid #cecece79;
+  background-color: #918f8f28;
   cursor: not-allowed;
 }
 
@@ -134,56 +145,30 @@ async function handleRun() {
 
 .custom-upload-btn {
   display: inline-block;
-  background-color: #012b85;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
   padding: 0.6rem 1.2rem;
-  font-size: 1rem;
+  font-size: clamp(0.7rem, 1.2vw, 1rem);
   border: none;
   border-radius: 0.6rem;
   cursor: pointer;
   margin-bottom: 0.5rem;
   transition: background-color 0.2s;
+  border: 1px solid #d6101079;
 }
 
 .custom-upload-btn:hover {
-  background-color: #012b8591;
+  background-color: #2b2b2b49;
 }
 
 .selected-file-name {
   margin-top: 0.3rem;
-  font-size: 0.95rem;
+  font-size: clamp(0.8rem, 1vw, 1rem);
   color: #333;
 }
 
-/* ====== Мобильная адаптация ====== */
-@media (max-width: 768px) {
-.demo-title {
-  font-size: 0.81rem;
-}
-/* .h3 {
-  font-size: 0.6rem;
-} */
-.custom-upload-btn {
-  font-size: 0.66rem;
-}
-.demo-button {
-  font-size: 0.66rem;
-}
-.result_button {
-  font-size: 0.81rem;
-}
 .output-placeholder {
-  font-size: 0.66rem;
-}
+  font-size: clamp(0.6rem, 1vw, 0.9rem);
 }
 
-/* ====== Широкие экраны (например 1440px+) ====== */
-@media (min-width: 1440px) {
-.demo-title {
-  font-size: 0.9rem;
-}
-.result_button {
-  font-size: 0.54rem;
-}
-}
 </style>

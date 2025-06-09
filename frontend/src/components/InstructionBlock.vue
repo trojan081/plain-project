@@ -1,7 +1,7 @@
 <template>
   <div class="demo-block">
-    <h2>Инструкция</h2>
-    <ol>
+    <h2 class="title">Инструкция</h2>
+    <ol class="main-text">
       <li>Все штриховки необходимо залить по сетке 50м * 50м. <br/> Для удобства используйте координатную сетку топографической съёмки.</li>
       <li>Все штриховки должны быть залиты с помощью "внутренней точки" и быть ассоциативными.</li>
       <li>Сохраните файл в формате <strong>*.dxf</strong>.</li>
@@ -35,5 +35,13 @@
   height: auto;
   border-radius: 16px;
   box-shadow: 0 0 10px rgba(37,35,35,0.2);
+}
+
+.main-text {
+  font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+  line-height: 1.6;
+}
+.title {
+  font-size: clamp(1.0rem, 1.2vw, 1.2rem);
 }
 </style>

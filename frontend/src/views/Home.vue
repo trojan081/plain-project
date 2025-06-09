@@ -3,14 +3,15 @@
     <div v-show="isLoading" class="loading-screen">
       <img src="/assets/gear.jpg" alt="Loading..." class="loading-icon" />
     </div>
-    
           <div>
             <div 
               class="header" 
               :style="{ filter: `blur(${blurValue}px)` }"
             >
               <div class="centered-title-container">
-                <div class="main-title">PLAIN</div>
+                <div class="main-title">
+                  PL<span class="outlined-red">A</span><span class="outlined-red">I</span>N
+                </div>
                 <div class="subtitle">новое слово в проектировании</div>
               </div>
             </div>
@@ -37,7 +38,7 @@
         </div> -->
       </div>
         <!-- <div class="llmchat-container">
-          <LLMChat />
+          
         </div> -->
     <!-- <Lines1 /> -->
     <HeroBanner />
@@ -59,7 +60,9 @@
               :class="{ visible: isSecondImgVisible }"
             />
           </div> -->
+          <div id="team">
       <Team />
+        </div>
       <div class="usage-block-wrapper">
         <div class="usage-background"></div>
         <div class="usage-block">
@@ -72,11 +75,9 @@
           
           <div class="triple-wrapper">
         <div class="center-column">
-          <div class="text-1-container">
-            <h2 class="text-h2">Дорожная карта</h2>
-          </div>
           <!-- <RoadmapSection /> -->
           <RoadMap2 />
+          <!-- <LLMChat /> -->
         <div class="start-section">
           <div class="start-content">
             <!-- <img class="demo-img" src="/assets/cad6.jpg"/> -->
@@ -109,6 +110,7 @@
   import Cards from '@/components/Cards.vue'
   import Team from '@/components/Team.vue'
   import UsageBlock from '@/components/UsageBlock.vue'
+  import NavBar from '@/components/NavBar.vue'
 
     const roadmapImages = [
       {
@@ -317,10 +319,11 @@
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  border: 1px solid #2f56914d;
-  box-shadow: 0 0 10px rgba(37,35,35,0.2);
+  /* border: 1px solid #2f56914d;
+  box-shadow: 0 0 10px rgba(37,35,35,0.2); */
   padding: 2.1rem;
   margin: 10%;
+  margin-top: 15%;
   border-radius: 72px;
 }
 
@@ -350,20 +353,22 @@
   color: #333;
   line-height: 1.6;
   text-align: center;
+  margin: 0 9%;
+  justify-content: center;
 }
 
 
 .start-button {
-  display: inline-block;
-  background-color: #dbe8f05e;
-  color: #000000;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
   padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border: 1px solid #0066ff;
-  border-radius: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid #d6101079;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s, transform 0.2s;
 }
 
 .start-button:hover {
@@ -388,9 +393,9 @@
   .start-section {
     padding: 1.2rem 1rem;
     margin: 5% auto;
-    border-radius: 32px;
+    /* border-radius: 32px;
     width: 80%;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1); */
     gap: 1.5rem;
   }
 
@@ -401,9 +406,9 @@
   }
 
   .start-text {
-    font-size: 0.75rem;
-    line-height: 1.5;
-    /* padding: 0 0.4rem; */
+   font-size: clamp(0.9rem, 1.3vw + 0.3rem, 1.1rem);
+   color: #444;
+   margin-bottom: 2rem;
   }
 
   .start-button {
@@ -511,25 +516,10 @@
 .usage-background {
   position: absolute;
   inset: 0;
-  background: url('/assets/bg6.png') center/cover no-repeat;
-  /* filter: blur(2220px); */
-  z-index: 1;
-}
-/* .innovation-section {
-  padding: 4rem 230px; 
-  background: url('/assets/bg3.png') no-repeat center/cover;
-  border-top: 1px solid #e9e9e9fd;
-  border-bottom: 1px solid #e9e9e9fd;
-  margin: 40px auto;
-  box-shadow: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-top: 9%;
-  padding-bottom: 15%;
-  
-} */
+  /* background: url('/assets/bg7.png') center/cover no-repeat; */
+  /* mask-image: linear-gradient(to top, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%); */
+background-image: repeating-linear-gradient(90deg, rgba(198, 198, 198,0.05) 0px, rgba(198, 198, 198,0.05) 1px,transparent 1px, transparent 5px),repeating-linear-gradient(0deg, rgba(198, 198, 198,0.05) 0px, rgba(198, 198, 198,0.05) 1px,transparent 1px, transparent 5px),repeating-linear-gradient(0deg, rgba(198, 198, 198,0.06) 0px, rgba(198, 198, 198,0.06) 1px,transparent 1px, transparent 15px),repeating-linear-gradient(90deg, rgba(198, 198, 198,0.06) 0px, rgba(198, 198, 198,0.06) 1px,transparent 1px, transparent 15px),linear-gradient(90deg, rgb(255,255,255),rgb(255,255,255));}
 
 /* содержимое поверх */
 .usage-block {
@@ -537,8 +527,11 @@
   z-index: 2;
   padding-bottom: 13%;
   border-bottom: 1px solid #e9e9e9fd;
-  background-color: rgba(255, 255, 255, 0.3); /* если нужно подсветлить */
-  backdrop-filter: blur(224px); 
+  /* background-color: rgba(255, 143, 143, 0); */
+  /* backdrop-filter: blur(224px);  */
+}
+.outlined-red:hover {
+  color: #d61010;
 }
 
   </style>

@@ -12,8 +12,10 @@
         Поддержка стандартов ПП РФ № 87 и № 1013.<br />
       </p>
       <div class="buttons">
+        <router-link to="/demo">
         <button class="primary">Начать сейчас</button>
-        <button class="secondary">Подробнее</button>
+        </router-link>
+        <button class="secondary" @click="scrollToTeam">Подробнее</button>
       </div>
     </div>
     <div class="hero-image">
@@ -27,6 +29,11 @@
 import Cube1 from '@/components/Cube1.vue';
 import Cube2 from '@/components/Cube2.vue';
 import Lines1 from './Lines1.vue';
+
+function scrollToTeam() {
+  const element = document.getElementById('team');
+  if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
 
 // Importing the Cube1 component for the hero image
 </script>   

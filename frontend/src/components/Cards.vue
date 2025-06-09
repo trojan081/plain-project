@@ -8,7 +8,7 @@
             <li class="cs-item">
                 <picture class="cs-picture">
                     <img class="cs-icon"
-                            src="/public/assets/adv_1.2.png"
+                            src="/assets/adv_1.2.png"
                             loading="lazy" decoding="async" alt="icon" width="33" height="38" aria-hidden="true">
                 </picture>
                 <!-- Text Grouped For Flexbox-->
@@ -19,7 +19,7 @@
             </li>
             <li class="cs-item">
                 <picture class="cs-picture">
-                    <img class="cs-icon" src="/public/assets/adv_2.1.png"
+                    <img class="cs-icon" src="/assets/adv_2.1.png"
                             loading="lazy" decoding="async" alt="icon" width="33" height="38" aria-hidden="true">
                 </picture>
                 <!-- Text Grouped For Flexbox-->
@@ -31,7 +31,7 @@
             <li class="cs-item">
                 <picture class="cs-picture">
                     <img class="cs-icon"
-                            src="/public/assets/adv_3.1.png"
+                            src="/assets/adv_3.1.png"
                             loading="lazy" decoding="async" alt="icon" width="33" height="38" aria-hidden="true">
                 </picture>
                 <!-- Text Grouped For Flexbox-->
@@ -43,7 +43,7 @@
             <li class="cs-item">
                 <picture class="cs-picture">
                     <img class="cs-icon"
-                            src="/public/assets/adv_4.1.png" loading="lazy"
+                            src="/assets/adv_4.1.png" loading="lazy"
                             decoding="async" alt="icon" width="33" height="38" aria-hidden="true">
                 </picture>
                 <!-- Text Grouped For Flexbox-->
@@ -55,7 +55,7 @@
             <li class="cs-item">
                 <picture class="cs-picture">
                     <img class="cs-icon"
-                            src="/public/assets/adv_5.1.png" loading="lazy"
+                            src="/assets/adv_5.1.png" loading="lazy"
                             decoding="async" alt="icon" width="33" height="38" aria-hidden="true">
                 </picture>
                 <!-- Text Grouped For Flexbox-->
@@ -67,7 +67,7 @@
             <li class="cs-item">
                 <picture class="cs-picture">
                     <img class="cs-icon"
-                            src="/public/assets/adv_6.1.png"
+                            src="/assets/adv_6.1.png"
                             loading="lazy" decoding="async" alt="icon" width="33" height="38" aria-hidden="true">
                 </picture>
                 <!-- Text Grouped For Flexbox-->

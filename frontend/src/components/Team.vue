@@ -30,7 +30,7 @@
         </div>
         <ul class="cs-card-group">
             <li class="cs-item">
-                <img class="cs-icon" loading="lazy" decoding="async" src="/public/assets/for_whom_1_2.jpg" alt="icon" width="48" height="48">
+                <img class="cs-icon" loading="lazy" decoding="async" src="/assets/for_whom_1_2.jpg" alt="icon" width="48" height="48">
                 <h3 class="cs-h3">Инженерам генплана</h3>
                 <div class="cs-item-text">
                     <ul class="cs-item-text">
@@ -41,7 +41,7 @@
                   </div>
             </li>
             <li class="cs-item">
-                <img class="cs-icon" loading="lazy" decoding="async" src="/public/assets/for_whom_2_3.jpg" alt="icon" width="48" height="48">
+                <img class="cs-icon" loading="lazy" decoding="async" src="/assets/for_whom_2_3.jpg" alt="icon" width="48" height="48">
                 <h3 class="cs-h3">Владельцам бизнеса</h3>
                 <div class="cs-item-text">
                     <ul class="cs-item-text">
@@ -52,7 +52,7 @@
                   </div>
             </li>
             <li class="cs-item">
-                <img class="cs-icon" loading="lazy" decoding="async" src="/public/assets/for_whom_3.jpg" alt="icon" width="48" height="48">
+                <img class="cs-icon" loading="lazy" decoding="async" src="/assets/for_whom_3.jpg" alt="icon" width="48" height="48">
                 <h3 class="cs-h3">Руководителям</h3>
                 <div class="cs-item-text">
                     <ul class="cs-item-text">
@@ -63,7 +63,7 @@
                   </div>
             </li>
             <li class="cs-item">
-                <img class="cs-icon" loading="lazy" decoding="async" src="/public/assets/for_whom_4.jpg" alt="icon" width="48" height="48">
+                <img class="cs-icon" loading="lazy" decoding="async" src="/assets/for_whom_4.jpg" alt="icon" width="48" height="48">
                 <h3 class="cs-h3">Фрилансерам</h3>
                 <div class="cs-item-text">
                     <ul class="cs-item-text">
@@ -78,7 +78,7 @@
 
     <!-- Background Image, there's a background image in the CSS for the parallax effect you'll need to change as well if you swap out our images -->
     <div class="cs-background">
-      <img src="/public/assets/team_1.3.jpg" alt="Фон" class="background-image" />
+      <img src="/assets/team_1.3.jpg" alt="Фон" class="background-image" />
     <div class="background-overlay"></div>
 </div>
 </section>
@@ -391,4 +391,135 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.13em;
 }
+/* === ДЛЯ МАЛЫХ ЭКРАНОВ (до 900px) === */
+@media (max-width: 900px) {
+  #hero-1619 {
+    padding: 2.2rem 0.3rem 1.7rem 0.3rem;
+    padding-top: 3.4rem;
+    margin: 0;
+  }
+  #hero-1619 .cs-container {
+    max-width: 100vw;
+    gap: 2.3rem;
+    padding: 0 0.3rem;
+  }
+  #hero-1619 .cs-content {
+    max-width: 97vw;
+    align-items: center;
+    text-align: center;
+    padding: 0 0.3rem;
+  }
+  #hero-1619 .cs-title {
+    font-size: clamp(1.08rem, 6vw, 1.45rem);
+    margin-bottom: 1.1rem;
+    text-shadow: 1px 1px 0 #000b; /* Лучше читается на фоне */
+    color: #fff;
+  }
+  #hero-1619 .cs-topper {
+    font-size: clamp(0.79rem, 3.3vw, 1.03rem);
+    gap: 0.25rem;
+    margin-bottom: 0.4rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  #hero-1619 .cs-chevron {
+    width: 1.4em;
+    min-width: 18px;
+    max-width: 40px;
+    height: auto;
+  }
+  .text1 {
+    font-size: clamp(0.72rem, 2.5vw, 0.89rem);
+    padding: 0 0.3em;
+  }
+  #hero-1619 .cs-card-group {
+    grid-template-columns: 1fr;
+    gap: 1.05rem;
+    width: 100%;
+  }
+  #hero-1619 .cs-item {
+    padding: 1.07rem 0.8rem;
+    border-radius: 22px;
+    margin-bottom: 0.5rem;
+    align-items: flex-start;
+    box-shadow: 0 3px 25px #0001;
+    min-width: 0;
+  }
+  #hero-1619 .cs-icon {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 0.9rem;
+  }
+  #hero-1619 .cs-h3 {
+    font-size: clamp(1.01rem, 3vw, 1.18rem);
+    margin-bottom: 0.7rem;
+  }
+  #hero-1619 .cs-item-text {
+    font-size: clamp(0.81rem, 2vw, 0.99rem);
+    color: #222;
+    margin: 0;
+    padding: 0 0 0 4px;
+  }
+  #hero-1619 .cs-item-text ul {
+    padding-left: 17px;
+  }
+  #hero-1619 .cs-background {
+    position: absolute;
+    inset: 0;
+    width: 100vw !important;
+    min-height: 430px;
+    z-index: -2;
+    overflow: hidden;
+  }
+  #hero-1619 .background-image {
+    width: 100vw;
+    min-height: 400px;
+    object-fit: cover;
+    object-position: 53% 32%;
+    filter: brightness(0.83) blur(0.5px) saturate(110%);
+  }
+  #hero-1619 .background-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,rgba(0,0,0,0.27) 5%,rgba(0,0,0,0.59) 98%);
+    z-index: 1;
+  }
+}
+
+/* === ЕЩЁ БОЛЕЕ КОМПАКТНЫЙ МОБИЛЬНЫЙ (до 550px) === */
+@media (max-width: 550px) {
+  #hero-1619 {
+    padding: 1.1rem 0.05rem 1.1rem 0.05rem;
+    padding-top: 2.5rem;
+  }
+  #hero-1619 .cs-title {
+    font-size: clamp(0.98rem, 6vw, 1.11rem);
+    margin-bottom: 0.7rem;
+  }
+  #hero-1619 .cs-topper {
+    font-size: clamp(0.67rem, 2.5vw, 0.81rem);
+  }
+  #hero-1619 .cs-card-group {
+    gap: 0.73rem;
+  }
+  #hero-1619 .cs-item {
+    padding: 0.7rem 0.45rem;
+    border-radius: 14px;
+  }
+  #hero-1619 .cs-h3 {
+    font-size: clamp(0.97rem, 3vw, 1.09rem);
+  }
+  #hero-1619 .cs-icon {
+    width: 29px;
+    height: 29px;
+    margin-bottom: 0.45rem;
+  }
+  #hero-1619 .cs-item-text {
+    font-size: clamp(0.76rem, 2vw, 0.91rem);
+  }
+}
+
+/* Основные стили (твой базовый десктоп) лучше не менять! Они будут работать для больших экранов */
+
 </style>

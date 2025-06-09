@@ -1,7 +1,6 @@
 <template>
   <CabinetHeader />
   <div class="panel-layout">
-    <CabinetSidebar />
     <div class="panel-content">
       <div class="segment centered-form">
         <h2 class="segment-title">Новый проект</h2>

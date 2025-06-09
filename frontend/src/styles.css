@@ -1834,7 +1834,7 @@ body.ios .video-container {
 .panel-layout {
   display: flex;
   min-height: 100vh;
-  margin-top: 4%; /* под хэдер */
+  margin-top: 4%;
 }
 
 .panel-content {

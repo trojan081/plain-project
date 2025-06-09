@@ -2,7 +2,7 @@
   <div class="app-wrapper">
     <CabinetHeader v-if="isCabinetRoute" />
     <!-- <DemoHeader v-else-if="isDemoPageRoute" /> -->
-    <Header v-else />
+    <Header2 v-else />
     <router-view />
     <Footer />
   </div>
@@ -12,6 +12,7 @@
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import Header from './components/Header.vue'
+import Header2 from './components/Header2.vue'
 import Footer from './components/Footer.vue'
 import CabinetHeader from './components/CabinetHeader.vue'
 import DemoHeader from './components/DemoHeader.vue'

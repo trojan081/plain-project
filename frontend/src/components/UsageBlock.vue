@@ -5,20 +5,20 @@
                 <div class="cs-box">
                     <span class="cs-number">CAD</span>
                     <picture class="cs-box-picture">
-                        <source media="(max-width: 600px)" srcset="/public/assets/laptop_cad.jpg">
-                        <source media="(min-width: 601px)" srcset="/public/assets/laptop_cad.jpg">
-                        <img loading="lazy" decoding="async" src="/public/assets/laptop_cad.jpg" alt="laptop with CAD software" width="521" height="672" aria-hidden="true">
+                        <source media="(max-width: 600px)" srcset="/assets/laptop_cad.jpg">
+                        <source media="(min-width: 601px)" srcset="/assets/laptop_cad.jpg">
+                        <img loading="lazy" decoding="async" src="/assets/laptop_cad.jpg" alt="laptop with CAD software" width="521" height="672" aria-hidden="true">
                     </picture>
                 </div>
                 <picture class="cs-picture">
-                    <img loading="lazy" decoding="async" src="/public/assets/laptop_cad.jpg" alt="laptop with CAD software" width="521" height="672" aria-hidden="true">
+                    <img loading="lazy" decoding="async" src="/assets/laptop_cad.jpg" alt="laptop with CAD software" width="521" height="672" aria-hidden="true">
                 </picture>
             </div>
             <div class="cs-content">
                 <span class="cs-topper">Комфортная адаптация</span>
-                <h2 class="cs-title">Почему Plain - это удобно</h2>
+                <h2 class="cs-title">Почему Plain - это удобно?</h2>
                 <p class="cs-text">
-                    Используй привычное ПО для проектирования: <br>Plain совместим <strong>с любыми CAD-системами.</strong>
+                    Используй привычное ПО для проектирования: <br>Plain совместим <strong class="text-CAD">с любыми CAD-системами.</strong>
                 </p>
                 <!-- <p class="cs-text">Если возникли вопросы: support@plain-project.ru</p> -->
             </div>
@@ -47,7 +47,14 @@
         background-color: white;
         border-radius: 50px; /* Adjust for more or less oval shape */
         padding: 2rem; /* Add padding so content doesn't stick to the edges */
-        box-shadow: 0px 1px 10px rgba(73, 9, 9, 0.63);
+        box-shadow:
+      inset 0 0 15px rgba(55, 84, 170, 0),
+      inset 0 0 20px rgba(255, 255, 255, 0),
+      1px 1px 1px rgba(55, 84, 170, 0.15),
+      1px 1px 1px rgba(255, 255, 255, 1),
+      inset 0px 0px 1px rgba(255, 255, 255, 0.2);
+      border: 1px solid #0000002a;
+      
     }
     #sbsr-298 .cs-content {
         /* set text align to left if content needs to be left aligned */
@@ -62,6 +69,7 @@
 
     #sbsr-298 .cs-text {
         margin-bottom: 1rem;
+        color: #000;
     }
     #sbsr-298 .cs-text:last-of-type {
         margin-bottom: 2rem;
@@ -90,6 +98,7 @@
         z-index: 1;
         /* prevents padding from adding to the width */
         box-sizing: border-box;
+        filter:blur(300px)
     }
 
     #sbsr-298 .cs-image-group {
@@ -277,7 +286,7 @@ body {
     box-sizing: border-box;
 }
 .cs-topper {
-    font-size: 1.5vw;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     line-height: 5.2em;
     text-transform: uppercase;
     text-align: inherit;
@@ -289,7 +298,7 @@ body {
 }
 
 .cs-title {
-    font-size: 1.3vw;
+    font-size: clamp(1.2rem, 3.5vw, 1.0rem);
     font-weight: 900;
     line-height: 3.2em;
     text-align: inherit;
@@ -306,7 +315,7 @@ body {
 }
 
 .cs-text {
-    font-size: var(--bodyFontSize);
+    font-size: clamp(1rem, 2vw, 1.0rem);
     line-height: 1.5em;
     text-align: inherit;
     width: 100%;
@@ -347,7 +356,7 @@ body {
 }
 
 #sbsr-298 .cs-number {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 8vw, 2.5rem);
 }
 
 #sbsr-298 .cs-number:before {
@@ -358,5 +367,7 @@ body {
     width: 96%;
     height: 96%;
 }
-
+.text-CAD {
+    color: #d61010
+}
 </style>

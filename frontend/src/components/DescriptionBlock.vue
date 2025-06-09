@@ -1,7 +1,7 @@
 <template>
   <div class="demo-block">
-    <h2>Описание программы</h2>
-    <p>
+    <h2 class="title">Описание программы</h2>
+    <p class="main-text">
       Данная демо-страница позволяет получить моментальный расчёт объёмов работ - площадей покрытий и длин линейных объектов.
       Это пример демонстрации базового функционала продукта.
       <br /><br />
@@ -27,9 +27,18 @@
 }
 
 .p {
-  font-size: 1.2vw;
+  font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+  line-height: 1.6;
   color: #012b85;
   font-weight: bold;
+}
+
+.main-text {
+  font-size: clamp(0.7rem, 1.2vw, 1.2rem);
+  line-height: 1.6;
+}
+.title {
+  font-size: clamp(1.0rem, 1.2vw, 1.2rem);
 }
 </style>
 
