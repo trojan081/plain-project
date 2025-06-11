@@ -25,6 +25,9 @@ backend/scripts/
 *.db
 *.dxf
 *.md
+*.gguf
+*.jsonl
+*.safetensors
 
 
 # OS

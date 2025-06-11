@@ -11,8 +11,8 @@
       </button>
       <nav :class="{ open: isMenuOpen }">
         <ul class="nav-links">
-          <li><a href="#">О нас</a></li>
-          <li><a href="#">Возможности</a></li>
+          <li><a class="button_1" @click="scrollToRoadmap">О нас</a></li>
+          <li><a class="button_1" @click="scrollToAdvantages">Возможности</a></li>
           <router-link to="demo">
           <li><a href="#">Demo</a></li>
           </router-link>
@@ -30,6 +30,18 @@ const isMenuOpen = ref(false);
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
+
+function scrollToAdvantages() {
+  const element = document.getElementById('Advantages');
+  if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  isMenuOpen.value = false;
+};
+
+function scrollToRoadmap() {
+  const element = document.getElementById('Roadmap');
+  if (element) element.scrollIntoView({behavior: 'smooth', block: 'start'});
+  isMenuOpen.value = false;
+};
 </script>
 
 <style scoped>
@@ -45,7 +57,7 @@ body {
     max-width: 5200px;
     margin: 0 3%;
     padding: 0 20px;
-    height: 60px;
+    /* height: 60px; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -173,6 +185,9 @@ nav {
   .nav-links li:last-child a {
     border-bottom: none;
   }
-  
+
+}
+.button_1 {
+  cursor: pointer
 }
 </style>

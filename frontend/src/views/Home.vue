@@ -43,7 +43,9 @@
     <!-- <Lines1 /> -->
     <HeroBanner />
     <InnovationSection />
+    <div id="Advantages">
     <Cards />
+    </div>
     <!-- <hr class="hr-0" /> -->
 
           <!-- <div class="img-cube-container" ref="imgContainer">
@@ -75,9 +77,9 @@
           
           <div class="triple-wrapper">
         <div class="center-column">
-          <!-- <RoadmapSection /> -->
+          <div id="Roadmap">
           <RoadMap2 />
-          <!-- <LLMChat /> -->
+          </div>
         <div class="start-section">
           <div class="start-content">
             <!-- <img class="demo-img" src="/assets/cad6.jpg"/> -->
@@ -87,8 +89,7 @@
             <router-link to="/demo" class="start-button">
               Перейти к DEMO
             </router-link>
-          
-          
+          <LLMChat class="llmchat-container" />
 
         </div>
         </div>

@@ -370,4 +370,40 @@ body {
 .text-CAD {
     color: #d61010
 }
+/* === Адаптация только .cs-box для мобильных (экраны до 767px) === */
+@media only screen and (max-width: 47.999rem) {
+    #sbsr-298 .cs-box {
+        width: clamp(6rem, 25vw, 8rem);
+        height: clamp(6rem, 25vw, 8rem);
+        left: 2%;
+        bottom: 4%;
+        transform: none;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #sbsr-298 .cs-number {
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
+        margin-bottom: 0.2rem;
+    }
+
+    #sbsr-298 .cs-number:before {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media only screen and (max-width: 47.999rem) {
+    #sbsr-298 .cs-image-group {
+        height: clamp(15rem, 60vw, 22rem);
+        margin-bottom: 2rem;
+        width: 100%;
+        max-width: 28rem;
+        aspect-ratio: auto;
+    }
+
+    #sbsr-298 .cs-picture img {
+        object-position: center;
+        border-radius: 12px;
+    }
+}
 </style>

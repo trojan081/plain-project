@@ -23,12 +23,11 @@
         class="chat-input"
         placeholder="Спроси меня о чем-нибудь :)"
         autocomplete="off"
-      />
+        :disabled="isSending" />
       <button
         type="submit"
         class="chat-send"
-        :disabled="!input.trim()"
-        title="Отправить"
+        :disabled="!input.trim() || isSending" title="Отправить"
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
           <path d="M3 21L21 12L3 3V10L17 12L3 14V21Z" fill="currentColor"/>
@@ -38,39 +37,98 @@
   </div>
 </template>
 
-
 <script setup>
 import { ref, nextTick } from 'vue'
 
 const input = ref('')
 const messages = ref([])
 const messagesEnd = ref(null)
+const isSending = ref(false) // Новая переменная для отслеживания состояния отправки
+
+// Функция для автопрокрутки
+async function scrollToBottom() {
+  await nextTick() // Ждем, пока DOM обновится
+  const el = messagesEnd.value
+  if (el) {
+    el.scrollTop = el.scrollHeight
+  }
+}
 
 async function sendMessage() {
-  if (!input.value.trim()) return
-  messages.value.push({ role: 'user', text: input.value })
-  const question = input.value
-  input.value = ''
+  if (!input.value.trim() || isSending.value) return // Добавляем проверку isSending
+  isSending.value = true // Устанавливаем состояние отправки в true
 
+  const userMessage = { role: 'user', text: input.value }
+  messages.value.push(userMessage)
+  scrollToBottom() // Прокрутка после добавления сообщения пользователя
+
+  const question = input.value
+  input.value = '' // Очищаем поле ввода сразу
+
+  // Добавляем пустое сообщение AI, чтобы начать получать токены
+  const aiMessage = { role: 'ai', text: '' }
+  messages.value.push(aiMessage)
+  
   try {
     const res = await fetch('/api/llm_chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ question })
     })
-    const { answer } = await res.json()
-    messages.value.push({ role: 'ai', text: answer })
-    await nextTick()
-    // автоскролл вниз
-    const el = messagesEnd.value
-    if (el) el.scrollTop = el.scrollHeight
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.error || 'Server error');
+    }
+
+    // Читаем поток
+    const reader = res.body.getReader()
+    const decoder = new TextDecoder()
+    let buffer = '' // Буфер для неполных JSON-объектов
+
+    while (true) {
+      const { value, done } = await reader.read()
+      if (done) break
+
+      buffer += decoder.decode(value, { stream: true })
+      
+      // Обработка нескольких JSON-объектов, разделенных новой строкой
+      const lines = buffer.split('\n')
+      buffer = lines.pop() // Последняя строка может быть неполной
+
+      for (const line of lines) {
+        if (line.trim() === '') continue
+        try {
+          const json_data = JSON.parse(line)
+          const token = json_data.token || ''
+          
+          // Добавляем токен к последнему сообщению AI
+          aiMessage.text += token
+          scrollToBottom() // Прокрутка при каждом получении токена
+        } catch (e) {
+          console.error('Error parsing JSON chunk:', e, 'Chunk:', line)
+        }
+      }
+    }
+
   } catch (e) {
-    messages.value.push({ role: 'ai', text: 'Ошибка сервера, попробуйте позже.' })
+    console.error('Fetch error:', e)
+    // Если сообщение AI пустое, добавляем сообщение об ошибке, иначе модифицируем существующее
+    if (aiMessage.text === '') {
+        messages.value.pop() // Удаляем пустое AI сообщение
+        messages.value.push({ role: 'ai', text: `Ошибка: ${e.message || 'Неизвестная ошибка сервера, попробуйте позже.'}` })
+    } else {
+        aiMessage.text += `\n\n(Ошибка: ${e.message || 'Неизвестная ошибка'})`
+    }
+    scrollToBottom()
+  } finally {
+    isSending.value = false // Сбрасываем состояние отправки
   }
 }
 </script>
 
 <style scoped>
+/* Ваш CSS остаётся без изменений */
 .chat-wrap {
   width: 100%;
   max-width: 1020px;

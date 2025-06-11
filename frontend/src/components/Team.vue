@@ -26,7 +26,6 @@
                 </svg>
             </span>
             <h1 class="cs-title"> Для сотрудников <br> всех категорий </h1>
-            <!-- <a href="" class="cs-button-solid">Request Appointment</a> -->
         </div>
         <ul class="cs-card-group">
             <li class="cs-item">
@@ -76,7 +75,6 @@
         </ul>
     </div>
 
-    <!-- Background Image, there's a background image in the CSS for the parallax effect you'll need to change as well if you swap out our images -->
     <div class="cs-background">
       <img src="/assets/team_1.3.jpg" alt="Фон" class="background-image" />
     <div class="background-overlay"></div>
@@ -85,11 +83,7 @@
 </template>
 
 <style scoped>
-/*-- -------------------------- -->
-<---           Hero             -->
-<--- -------------------------- -*/
 
-/* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
   #hero-1619 {
     padding: var(--sectionPadding);
@@ -324,8 +318,7 @@
 /* Large Desktop Parallax Effect - 100px */
 @media only screen and (min-width: 100rem) {
 }
-                                :root {
-    /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+:root {
     --primary: #ff6a3e;
     --primaryLight: #ffba43;
     --secondary: #ffba43;
@@ -487,7 +480,6 @@ body {
   }
 }
 
-/* === ЕЩЁ БОЛЕЕ КОМПАКТНЫЙ МОБИЛЬНЫЙ (до 550px) === */
 @media (max-width: 550px) {
   #hero-1619 {
     padding: 1.1rem 0.05rem 1.1rem 0.05rem;
@@ -511,8 +503,8 @@ body {
     font-size: clamp(0.97rem, 3vw, 1.09rem);
   }
   #hero-1619 .cs-icon {
-    width: 29px;
-    height: 29px;
+    width: 30%;
+    height: auto;
     margin-bottom: 0.45rem;
   }
   #hero-1619 .cs-item-text {
@@ -520,6 +512,20 @@ body {
   }
 }
 
-/* Основные стили (твой базовый десктоп) лучше не менять! Они будут работать для больших экранов */
+#hero-1619 .cs-container {
+  gap: clamp(3.75rem, 13vw, 11.25rem); 
+  padding: 0 1rem; 
+}
+
+#hero-1619 .cs-item {
+  margin: 0;
+  padding: clamp(1rem, 3vw, 2rem);
+}
+#hero-1619 .background-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.27) 5%, rgba(0,0,0,0.59) 98%);
+  z-index: 1;
+}
 
 </style>
