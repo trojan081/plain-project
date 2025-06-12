@@ -28,15 +28,18 @@ async def llm_chat(req: Request):
         prompt = format_alpaca_prompt(question)
 
         payload = {
-            "model": "plain_model_1.2",
-            "stream": True,  # Включаем стриминг
+            "model": "plain_model_3.0",
+            "stream": True, 
             "messages": [
                 {"role": "user", "content": prompt}
             ],
             "options": {
                 "temperature": 0.2,
                 "top_p": 0.8,
-                "max_tokens": 64
+                "max_tokens": 4096,
+                "do_sample": True,   
+                # "repetition_penalty": 111.1,
+                "stop": ["###", "### Инструкция:", "### Вводные данные:", "### Ответ:"]
             }
         }
 
