@@ -1,0 +1,1 @@
+FROM ./plain_model_4.0.gguf

@@ -1,7 +1,6 @@
 from fastapi import APIRouter, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import StreamingResponse
 import requests, os, traceback
-from fastapi.responses import JSONResponse, StreamingResponse 
 import json
 
 router = APIRouter()
@@ -22,60 +21,39 @@ def format_alpaca_prompt(instruction: str, input_text: str = "", output_text: st
 
 @router.post("/llm_chat")
 async def llm_chat(req: Request):
-    try:
-        data = await req.json()
-        question = data.get("question", "")
-        prompt = format_alpaca_prompt(question)
+    data = await req.json()
+    question = data.get("question", "")
+    prompt = format_alpaca_prompt(question)
 
-        payload = {
-            "model": "plain_model_3.0",
-            "stream": True, 
-            "messages": [
-                {"role": "user", "content": prompt}
-            ],
-            "options": {
-                "temperature": 0.2,
-                "top_p": 0.8,
-                "max_tokens": 4096,
-                "do_sample": True,   
-                # "repetition_penalty": 111.1,
-                "stop": ["###", "### Инструкция:", "### Вводные данные:", "### Ответ:"]
-            }
+    payload = {
+        "model": "plain_model_4.0",
+        "stream": True,
+        "messages": [{"role": "user", "content": prompt}],
+        "options": {
+            "temperature": 0.2,
+            "top_p": 0.8,
+            "max_tokens": 4096,
+            "do_sample": True,
+            "stop": ["###", "### Инструкция:", "### Вводные данные:", "### Ответ:"]
         }
+    }
 
-        # Отправляем запрос к Ollama
-        resp = requests.post(OLLAMA_URL, json=payload, stream=True, timeout=120) # stream=True для requests!
-        resp.raise_for_status()
-
-        async def generate_stream():
-            for chunk in resp.iter_content(chunk_size=None): # Читаем поток по строкам
+    def generate_stream():
+        with requests.post(OLLAMA_URL, json=payload, stream=True, timeout=120) as resp:
+            for chunk in resp.iter_lines():
                 if chunk:
                     try:
-                        # Каждая строка - это отдельный JSON объект
-                        # strip() убирает лишние пробелы и символы новой строки
                         json_data = json.loads(chunk.decode('utf-8').strip())
-                        # Ollama возвращает 'done' когда ответ закончен
                         if json_data.get("done"):
                             break
-                        # Извлекаем контент токена
                         token = json_data.get("message", {}).get("content", "")
                         if token:
-                            # Отправляем каждый токен как отдельный JSON-объект
                             yield json.dumps({"token": token}) + "\n"
                     except json.JSONDecodeError:
-                        # Игнорируем неполные или некорректные JSON-объекты,
-                        # если такое вдруг случится в середине потока
                         continue
                     except Exception as e:
                         print(f"Error processing chunk: {e}")
                         traceback.print_exc()
-                        break # Прерываем стриминг при ошибке
+                        break
 
-        # Возвращаем StreamingResponse
-        # media_type очень важен, чтобы клиент знал, как парсить ответ
-        return StreamingResponse(generate_stream(), media_type="application/x-ndjson")
-
-    except Exception as e:
-        traceback.print_exc()
-        return JSONResponse(status_code=500, content={"error": str(e), "trace": traceback.format_exc()})
-
+    return StreamingResponse(generate_stream(), media_type="application/x-ndjson")

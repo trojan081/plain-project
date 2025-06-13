@@ -71,11 +71,8 @@
           <UsageBlock />
         </div>
       </div>
-          
-      
-
-          
-          <div class="triple-wrapper">
+      <LLMChat class="llmchat-container" />
+      <div class="triple-wrapper">
         <div class="center-column">
           <div id="Roadmap">
           <RoadMap2 />
@@ -89,7 +86,6 @@
             <router-link to="/demo" class="start-button">
               Перейти к DEMO
             </router-link>
-          <LLMChat class="llmchat-container" />
 
         </div>
         </div>

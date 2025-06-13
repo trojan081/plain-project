@@ -1,4 +1,9 @@
 <template>
+  <div class="llm-chat">
+  <text class="title">AI-помощник Plain</text>
+    <Cube1 />
+  </div>
+  <p class="llm_description">Мы активно внедряем искусственный интеллект в наш сервис. Воспользуйтесь нашим ИИ-ассистентом:</p>
   <div :class="['chat-wrap', messages.length ? 'has-messages' : '']">
     <div class="chat-messages" ref="messagesEnd">
       <div
@@ -12,7 +17,10 @@
             msg.role === 'user' ? 'bubble-user' : 'bubble-ai'
           ]"
         >
-          <p>{{ msg.text }}</p>
+          <p>
+            {{ msg.text }}
+            <span v-if="msg.role === 'ai' && isTyping" class="blinking-cursor">|</span>
+          </p>
         </div>
       </div>
     </div>
@@ -38,12 +46,46 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
+import Cube1 from './Cube1.vue' 
+
+function handleWheelBlockPageScroll(e) {
+  const el = messagesEnd.value
+  if (!el) return
+
+  const deltaY = e.deltaY
+  const atTop = el.scrollTop === 0
+  const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 1
+
+  const scrollingDown = deltaY > 0
+  const scrollingUp = deltaY < 0
+
+  // Если прокручиваем вверх и уже вверху — останавливаем всплытие
+  // Если прокручиваем вниз и уже внизу — тоже
+  if ((scrollingUp && atTop) || (scrollingDown && atBottom)) {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+}
+
+onMounted(() => {
+  const el = messagesEnd.value
+  if (el) {
+    el.addEventListener('wheel', handleWheelBlockPageScroll, { passive: false })
+  }
+})
+
+onBeforeUnmount(() => {
+  const el = messagesEnd.value
+  if (el) {
+    el.removeEventListener('wheel', handleWheelBlockPageScroll)
+  }
+})
 
 const input = ref('')
 const messages = ref([])
 const messagesEnd = ref(null)
-const isSending = ref(false) // Новая переменная для отслеживания состояния отправки
+const isSending = ref(false)
 
 // Функция для автопрокрутки
 async function scrollToBottom() {
@@ -97,14 +139,24 @@ async function sendMessage() {
       buffer = lines.pop() // Последняя строка может быть неполной
 
       for (const line of lines) {
-        if (line.trim() === '') continue
+        if (!line.trim()) continue
         try {
           const json_data = JSON.parse(line)
           const token = json_data.token || ''
-          
-          // Добавляем токен к последнему сообщению AI
-          aiMessage.text += token
-          scrollToBottom() // Прокрутка при каждом получении токена
+          if (token) {
+            // Добавляем состояние для отслеживания печати
+            const isTyping = ref(true)
+            
+            // Печатаем текст по буквам с плавной анимацией
+            for (const char of token) {
+              aiMessage.text += char
+              await nextTick()
+              await new Promise(resolve => setTimeout(resolve, 25)) // Увеличиваем задержку для более заметного эффекта
+              scrollToBottom()
+            }
+            
+            isTyping.value = false
+          }
         } catch (e) {
           console.error('Error parsing JSON chunk:', e, 'Chunk:', line)
         }
@@ -125,6 +177,7 @@ async function sendMessage() {
     isSending.value = false // Сбрасываем состояние отправки
   }
 }
+
 </script>
 
 <style scoped>
@@ -132,7 +185,8 @@ async function sendMessage() {
 .chat-wrap {
   width: 100%;
   max-width: 1020px;
-  margin-top: 24%;
+  margin-top: 6%;
+  margin-bottom: 12%;
   margin-left: auto;
   margin-right: auto;
   background: #ffffff;
@@ -153,7 +207,7 @@ async function sendMessage() {
 }
 
 .chat-wrap.has-messages {
-  min-height: 270px;
+  min-height: 120px;
 }
 
 .chat-messages {
@@ -165,7 +219,7 @@ async function sendMessage() {
   flex-direction: column;
   gap: 12px;
   scrollbar-width: thin;
-  scrollbar-color: #b3cdfa #f7faff;
+  scrollbar-color: #dfdfdf #f7faff;
   transition: max-height 0.5s cubic-bezier(.6,0,.39,1);
   max-height: 270px;
 }
@@ -197,16 +251,16 @@ async function sendMessage() {
 }
 
 .bubble-user {
-  background: linear-gradient(45deg, #3a118546 20%, #376cb196 100%);
+  background: linear-gradient(45deg, #00000046 20%, #777373a1 100%);
   color: #fff;
   border-radius: 17px 17px 7px 17px;
   align-self: flex-end;
-  box-shadow: 0 3px 18px #3584e610;
+  box-shadow: 0 3px 18px #a8a2a236;
 }
 .bubble-ai {
   background: #fff;
   color: #213359;
-  border: 1.5px solid #d6c4eb8e;
+  border: 1.5px solid #5e2a2a38;
   align-self: flex-start;
 }
 
@@ -215,7 +269,7 @@ async function sendMessage() {
   align-items: center;
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 2px 12px #3584e606;
+  box-shadow: 0 2px 12px #2761a806;
   padding: 7px 8px 7px 14px;
   gap: 12px;
   position: relative;
@@ -230,17 +284,17 @@ async function sendMessage() {
   color: #222;
   padding: 7px 6px;
   border-radius: 8px;
-  border: 1px solid #c4d0eb8e;
+  border: 1px solid #cacaca8e;
 }
 
 .chat-input::placeholder {
-  color: #9eb6d6;
+  color: #c9c9c9;
   font-style: italic;
 }
 
 .chat-send {
-  background: linear-gradient(90deg, #3286ef 70%, #49b7ff 100%);
-  color: #fff;
+  background: linear-gradient(90deg, #ff6f6f 70%, #e0c6c6 100%);
+  color: #f8f8f8;
   border: none;
   border-radius: 50%;
   width: 38px;
@@ -259,7 +313,70 @@ async function sendMessage() {
   filter: grayscale(0.2);
 }
 .chat-send:not(:disabled):hover {
-  background: linear-gradient(90deg, #266ad7 80%, #38a0e7 100%);
+  background: linear-gradient(90deg, #d4e48b 70%, #e0c6c6 100%);
   transform: scale(1.1);
+}
+
+.title {
+  text-align: center;
+  font-size: clamp(0.8rem, 4vw + 0.5rem, 2.8rem);
+  color: rgb(50,50,50);
+  margin-top: 10rem;
+  font-weight: bold;
+}
+
+.llm_description {
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.llm-chat {
+  width: 100%;
+  max-width: 1020px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .chat-wrap {
+    padding: 1rem;
+    border-radius: 1.2rem;
+  }
+
+  .chat-bubble {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.9rem;
+    margin: 4%;
+  }
+
+  .chat-form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .chat-input {
+    width: 90%;
+    min-width: unset;
+  }
+
+  .chat-send {
+    width: 100%;
+    border-radius: 0.6rem;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 1.6rem;
+    margin-top: 3rem;
+  }
+
+  .llm_description {
+    font-size: 0.95rem;
+    margin: 4%;
+  }
 }
 </style>
